@@ -1,2 +1,12 @@
-*.class
-*.log
+*.worksheet.sc
+.ammonite/
+.bloop/
+.bsp/
+.dotty-ide*
+.idea/
+.metals/
+.scala-build/
+.scala/
+.vscode/
+metals.sbt
+target/
