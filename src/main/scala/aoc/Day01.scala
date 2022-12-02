@@ -1,7 +1,5 @@
 package aoc
 
-import scala.io.Source
-
 type Calories = Int
 type Inventory = List[List[Calories]]
 

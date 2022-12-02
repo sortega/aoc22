@@ -1,10 +1,6 @@
 package aoc
 
-import org.scalactic.TypeCheckedTripleEquals
-import org.scalatest.flatspec.AnyFlatSpec
-import org.scalatest.matchers.should.Matchers
-
-final class Day01Test extends AnyFlatSpec with Matchers with TypeCheckedTripleEquals:
+final class Day01Test extends UnitTest:
   val input = Calories.parseInventory("""1000
                                         |2000
                                         |3000
