@@ -4,7 +4,7 @@ object Day01:
   type Input = List[Inventory]
   type Inventory = List[Calories]
   type Calories = Int
-  
+
   object Inventory:
     def parseInventory(lines: List[String]): Inventory = lines.map(_.toInt)
 

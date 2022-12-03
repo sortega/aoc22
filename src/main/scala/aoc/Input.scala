@@ -10,7 +10,7 @@ object Input:
     def slurp: String = linesIterator.mkString("\n")
 
     def linesIterator: Iterator[String] = source.getLines()
-    
+
     def groupsOfLines: List[List[String]] = Collections.splitList(linesIterator.toList)(_.isBlank)
 
     def parseLines[A](parse: String => A): List[A] = linesIterator.map(parse).toList
