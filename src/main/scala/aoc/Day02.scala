@@ -6,8 +6,6 @@ import aoc.Day02.Strategy.{ Rock, Paper, Scissors }
 
 object Day02:
   type Guide = List[EncryptedRound]
-  object Guide:
-    def parse(lines: Iterator[String]): Guide = lines.map(EncryptedRound.parse).toList
 
   val StrategyCode: Map[Char, Strategy] = Map(
     'A' -> Rock,
@@ -63,6 +61,6 @@ object Day02:
   def part2(guide: Guide): Int = guide.map(_.decrypt2.score).sum
 
   def main(args: Array[String]): Unit =
-    val input = Guide.parse(Inputs.linesIterator(day = 2))
+    val input = Input(day = 2).parseLines(EncryptedRound.parse)
     println(part1(input))
     println(part2(input))

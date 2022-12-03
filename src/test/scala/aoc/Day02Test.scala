@@ -3,9 +3,11 @@ package aoc
 import aoc.Day02.*
 
 final class Day02Test extends UnitTest:
-  val input = Guide.parse("""A Y
-                            |B X
-                            |C Z""".stripMargin.linesIterator)
+  val input = Input(
+    """A Y
+      |B X
+      |C Z""".stripMargin
+  ).parseLines(EncryptedRound.parse)
 
   "Part 1" `should` "interpret second value as my strategy" in {
     part1(input) should ===(15)
