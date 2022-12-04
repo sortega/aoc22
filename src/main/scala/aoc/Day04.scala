@@ -1,5 +1,8 @@
 package aoc
 
+import atto.*, Atto.*
+import cats.implicits.*
+
 object Day04:
   type Input = List[Assignment]
 
@@ -8,11 +11,8 @@ object Day04:
     def hasOverlap: Boolean = left.intersect(right).nonEmpty
 
   object Assignment:
-    private val Pattern = raw"(\d+)-(\d+),(\d+)-(\d+)".r
-    def parse(string: String): Assignment = string match
-      case Pattern(start1, end1, start2, end2) =>
-        Assignment(start1.toInt to end1.toInt, start2.toInt to end2.toInt)
-      case _ => ???
+    val rangeParser: Parser[Range.Inclusive] = (int <~ char('-'), int).mapN(Range.inclusive)
+    val parser: Parser[Assignment] = (rangeParser <~ char(','), rangeParser).mapN(Assignment.apply)
 
   extension (interval: Range.Inclusive)
     def containsRange(other: Range.Inclusive): Boolean =
@@ -23,6 +23,6 @@ object Day04:
   def part2(input: Input): Int = input.count(_.hasOverlap)
 
   def main(args: Array[String]): Unit =
-    val input = Input(day = 04).parseLines(Assignment.parse)
+    val input = Input(day = 4).parseLines(Assignment.parser)
     println(part1(input))
     println(part2(input))

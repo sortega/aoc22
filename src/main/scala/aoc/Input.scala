@@ -1,5 +1,8 @@
 package aoc
 
+import atto.Parser
+import atto.Atto.*
+import cats.implicits.*
 import scala.io.Source
 
 object Input:
@@ -13,4 +16,14 @@ object Input:
 
     def groupsOfLines: List[List[String]] = Collections.splitList(linesIterator.toList)(_.isBlank)
 
+    def parse[A](parser: Parser[A]): A = parseOrThrow(parser)(slurp)
+
+    def parseLines[A](parser: Parser[A]): List[A] = parseLines(parseOrThrow(parser))
+
     def parseLines[A](parse: String => A): List[A] = linesIterator.map(parse).toList
+
+    private def parseOrThrow[A](parser: Parser[A])(string: String): A =
+      parser
+        .parseOnly(string)
+        .either
+        .valueOr(error => throw new IllegalArgumentException(error))

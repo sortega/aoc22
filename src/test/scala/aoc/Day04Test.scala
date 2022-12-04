@@ -10,7 +10,8 @@ final class Day04Test extends UnitTest:
       |2-8,3-7
       |6-6,4-6
       |2-6,4-8
-      |""".stripMargin).parseLines(Assignment.parse)
+      |""".stripMargin
+  ).parseLines(Assignment.parser)
 
   "Part 1" `should` "count assignment pairs with full overlap" in {
     part1(input) should ===(2)

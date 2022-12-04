@@ -45,7 +45,8 @@ lazy val commonSettings = {
 
 lazy val dependencies = Seq(
   libraryDependencies ++= Seq(
-    "org.typelevel" %% "cats-core" % "2.9.0"
+    "org.tpolecat" % "atto-core_3" % "0.9.5",
+    "org.typelevel" %% "cats-core" % "2.9.0",
   ),
   libraryDependencies ++= Seq(
     com.eed3si9n.expecty,
