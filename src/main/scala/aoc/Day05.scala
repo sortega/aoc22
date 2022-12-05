@@ -1,6 +1,8 @@
 package aoc
 
-import atto.*, Atto.*
+import atto.*
+import Atto.*
+import aoc.Functions.iterate
 import cats.implicits.*
 
 object Day05:
@@ -12,9 +14,7 @@ object Day05:
         amount: Int,
         from: Stack,
         to: Stack,
-      ): Stacks =
-      if (amount <= 0) this
-      else move(from, to).moveMany(amount - 1, from, to)
+      ): Stacks = iterate(this, amount)(_.move(from, to))
 
     def moveBatch(
         amount: Int,
