@@ -3,7 +3,7 @@ package aoc
 import aoc.Day03.*
 
 final class Day03Test extends UnitTest:
-  val input = Input(
+  val input = Inputs(
     """vJrwpWtwJgWrhcsFMMfFFhFp
       |jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL
       |PmmdzqPrVvPwwTWBwg

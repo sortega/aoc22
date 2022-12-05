@@ -5,7 +5,7 @@ import atto.Atto.*
 import cats.implicits.*
 import scala.io.Source
 
-object Input:
+object Inputs:
   def apply(day: Int): InputSource = InputSource(Source.fromResource(f"day$day%02d.txt"))
   def apply(inline: String): InputSource = InputSource(Source.fromString(inline))
 

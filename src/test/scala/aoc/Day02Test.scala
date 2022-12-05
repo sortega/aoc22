@@ -3,7 +3,7 @@ package aoc
 import aoc.Day02.*
 
 final class Day02Test extends UnitTest:
-  val input = Input(
+  val input = Inputs(
     """A Y
       |B X
       |C Z""".stripMargin

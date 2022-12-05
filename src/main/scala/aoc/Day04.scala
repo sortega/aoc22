@@ -23,6 +23,6 @@ object Day04:
   def part2(input: Input): Int = input.count(_.hasOverlap)
 
   def main(args: Array[String]): Unit =
-    val input = Input(day = 4).parseLines(Assignment.parser)
+    val input = Inputs(day = 4).parseLines(Assignment.parser)
     println(part1(input))
     println(part2(input))

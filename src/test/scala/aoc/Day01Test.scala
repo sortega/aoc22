@@ -3,7 +3,7 @@ package aoc
 import Day01.*
 
 final class Day01Test extends UnitTest:
-  val input = Input(
+  val input = Inputs(
     """1000
       |2000
       |3000

@@ -33,6 +33,6 @@ object Day03:
   }
 
   def main(args: Array[String]): Unit =
-    val input = Input(day = 3).parseLines(Rucksack.parse)
+    val input = Inputs(day = 3).parseLines(Rucksack.parse)
     println(part1(input))
     println(part2(input))

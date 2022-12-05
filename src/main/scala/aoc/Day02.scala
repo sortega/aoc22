@@ -61,6 +61,6 @@ object Day02:
   def part2(guide: Guide): Int = guide.map(_.decrypt2.score).sum
 
   def main(args: Array[String]): Unit =
-    val input = Input(day = 2).parseLines(EncryptedRound.parse)
+    val input = Inputs(day = 2).parseLines(EncryptedRound.parse)
     println(part1(input))
     println(part2(input))

@@ -13,6 +13,6 @@ object Day01:
   def part2(inventory: Input): Calories = inventory.map(_.sum).sorted.takeRight(3).sum
 
   def main(args: Array[String]): Unit =
-    val input = Input(day = 1).groupsOfLines.map(Inventory.parseInventory)
+    val input = Inputs(day = 1).groupsOfLines.map(Inventory.parseInventory)
     println(part1(input))
     println(part2(input))

@@ -3,7 +3,7 @@ package aoc
 import aoc.Day04.*
 
 final class Day04Test extends UnitTest:
-  val input = Input(
+  val input = Inputs(
     """2-4,6-8
       |2-3,4-5
       |5-7,7-9
