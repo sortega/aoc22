@@ -13,3 +13,5 @@ object Collections:
         else loop(rest, groups)
 
     loop(list)
+    
+  def mapForKeys[K, V](keys: Iterable[K])(f: K => V): Map[K, V] = keys.map(k => k -> f(k)).toMap
