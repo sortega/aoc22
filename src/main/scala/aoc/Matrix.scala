@@ -24,16 +24,16 @@ case class Matrix[A](rows: Vector[Vector[A]]):
     }
   )
   def mapRows[B](f: Vector[A] => Vector[B]): Matrix[B] = Matrix(rows.map(f))
-  def mapColumns[B](f: Vector[A] => Vector[B]): Matrix[B] = 
+  def mapColumns[B](f: Vector[A] => Vector[B]): Matrix[B] =
     Matrix(rows.transpose.map(f).transpose)
 
   def zipWith[B, C](other: Matrix[B])(f: (A, B) => C): Matrix[C] =
     Matrix.fromMap(toMap.align(other.toMap).collect {
       case (pos, Ior.Both(a, b)) => pos -> f(a, b)
     })
-    
+
   def dotProduct(other: Matrix[A])(implicit num: Numeric[A]): Matrix[A] =
-    zipWith(other) { (a, b) => num.times(a, b) }
+    zipWith(other)((a, b) => num.times(a, b))
 
   def reverseRows: Matrix[A] = Matrix(rows.map(_.reverse))
 
