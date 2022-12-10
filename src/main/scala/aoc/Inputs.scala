@@ -6,7 +6,8 @@ import cats.implicits.*
 import scala.io.Source
 
 object Inputs:
-  def apply(day: Int): InputSource = InputSource(Source.fromResource(f"day$day%02d.txt"))
+  def apply(day: Int, test: Boolean = false): InputSource =
+    InputSource(Source.fromResource("day%02d%s.txt".format(day, if (test) "-test" else "")))
   def apply(inline: String): InputSource = InputSource(Source.fromString(inline))
 
   class InputSource(source: Source):
