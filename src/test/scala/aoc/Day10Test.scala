@@ -21,7 +21,7 @@ final class Day10Test extends UnitTest:
     )
   }
 
-  "Part 1" `should` "work" in {
+  "Part 1" `should` "count positions visited by the tail" in {
     part1(largerInput) should ===(13140)
     part1(actualInput) should ===(11960)
   }
