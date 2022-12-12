@@ -10,7 +10,9 @@ case class Pos(row: Int, col: Int):
 
   def map(f: Int => Int): Pos = Pos(f(row), f(col))
 
-  def adjacent8(other: Pos): Boolean =
+  def adjacent4: Set[Pos] = CardinalPoint.values.map(_.pos + this).toSet
+
+  def isAdjacent8(other: Pos): Boolean =
     val diff = other - this
     diff.row.abs <= 1 && diff.col.abs <= 1
 

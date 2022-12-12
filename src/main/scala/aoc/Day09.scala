@@ -31,7 +31,7 @@ object Day09:
       State(nextHead, nextTail)
 
     private def moveTowards(pos: Pos, target: Pos): Pos =
-      if (target.adjacent8(pos)) pos
+      if (target.isAdjacent8(pos)) pos
       else
         val shouldMoveDiagonally = (target - pos).manhattanNorm > 1
         pos + (target - pos).map { delta =>

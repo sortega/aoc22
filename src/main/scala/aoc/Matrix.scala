@@ -52,6 +52,8 @@ object Matrix:
   def fromMap[A](map: Map[Pos, A]): Matrix[A] =
     fromMap(map, pos => throw new NoSuchElementException(s"no value for $pos"))
 
+  def fromMap[A](map: Map[Pos, A], emptyValue: A): Matrix[A] = fromMap(map, _ => emptyValue)
+
   def fromMap[A](map: Map[Pos, A], emptyValue: Pos => A): Matrix[A] = (for {
     maxRow <- map.keys.map(_.row).maxOption
     maxCol <- map.keys.map(_.col).maxOption
