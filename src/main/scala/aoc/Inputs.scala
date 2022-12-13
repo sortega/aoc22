@@ -1,8 +1,7 @@
 package aoc
 
+import Parsing.parseOrThrow
 import atto.Parser
-import atto.Atto.*
-import cats.implicits.*
 import scala.io.Source
 
 object Inputs:
@@ -22,9 +21,3 @@ object Inputs:
     def parseLines[A](parser: Parser[A]): List[A] = parseLines(parseOrThrow(parser))
 
     def parseLines[A](parse: String => A): List[A] = linesIterator.map(parse).toList
-
-    private def parseOrThrow[A](parser: Parser[A])(string: String): A =
-      parser
-        .parseOnly(string)
-        .either
-        .valueOr(error => throw new IllegalArgumentException(error))
