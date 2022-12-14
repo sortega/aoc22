@@ -44,7 +44,8 @@ case class Matrix[A](rows: Vector[Vector[A]]):
     (value, colNumber) <- row.zipWithIndex
   } yield Pos(rowNumber, colNumber) -> value).toMap
 
-  override def toString: String = rows.map(_.mkString(" ")).mkString("\n")
+  override def toString: String = toString(" ")
+  def toString(sep: String): String = rows.map(_.mkString(sep)).mkString("\n")
 
 object Matrix:
   def empty[A]: Matrix[A] = Matrix(Vector())

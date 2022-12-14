@@ -21,20 +21,22 @@ object Day13:
       case ListData(values) => values.mkString("[", ",", "]")
 
   object Data:
-    implicit val order: Ordering[Data] =
-      case (IntData(l), IntData(r)) => l.compare(r)
-      case (l: IntData, r: ListData) => Ordering[Data].compare(ListData(List(l)), r)
-      case (l: ListData, r: IntData) => Ordering[Data].compare(l, ListData(List(r)))
-      case (ListData(l), ListData(r)) => Ordering[List[Data]].compare(l, r)
+    given Ordering[Data] with
+      def compare(left: Data, right: Data) = (left, right) match
+        case (IntData(l), IntData(r)) => l.compare(r)
+        case (l: IntData, r: ListData) => compare(ListData(List(l)), r)
+        case (l: ListData, r: IntData) => compare(l, ListData(List(r)))
+        case (ListData(l), ListData(r)) => Ordering[List[Data]].compare(l, r)
 
-    implicit def lexicographicOrder[A: Ordering]: Ordering[List[A]] =
-      case (Nil, Nil) => 0
-      case (Nil, _) => -1
-      case (_, Nil) => 1
-      case (l :: ls, r :: rs) =>
-        Ordering[A].compare(l, r) match
-          case 0 => Ordering[List[A]].compare(ls, rs)
-          case other => other
+    given lexicographicOrder[A](using order: Ordering[A]): Ordering[List[A]] with
+      def compare(left: List[A], right: List[A]) = (left, right) match
+        case (Nil, Nil) => 0
+        case (Nil, _) => -1
+        case (_, Nil) => 1
+        case (l :: ls, r :: rs) =>
+          order.compare(l, r) match
+            case 0 => compare(ls, rs)
+            case other => other
 
     private def intDataParser = int.map(IntData.apply)
     private def listDataParser =
