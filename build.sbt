@@ -54,3 +54,6 @@ lazy val dependencies = Seq(
     org.scalatestplus.`scalacheck-1-16`,
   ).map(_ % Test),
 )
+
+fork := true
+javaOptions ++= Seq("-Xmx12g")

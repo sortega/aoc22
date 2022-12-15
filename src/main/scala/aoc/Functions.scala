@@ -15,3 +15,8 @@ object Functions:
       case (i, a) if i >= n => Right(a).pure
       case (i, a) => f(a).map(nextA => Left((i + 1) -> nextA))
     }
+
+  def timed[A](f: => A): A =
+    val start = System.currentTimeMillis
+    try f
+    finally println(s"Time: ${System.currentTimeMillis - start}ms")

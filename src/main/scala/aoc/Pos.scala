@@ -17,6 +17,7 @@ case class Pos(row: Int, col: Int):
     diff.row.abs <= 1 && diff.col.abs <= 1
 
   def manhattanNorm: Int = row.abs + col.abs
+  def manhattanDist(other: Pos): Int = (other - this).manhattanNorm
 
 object Pos:
   val Origin = Pos(0, 0)
