@@ -18,6 +18,9 @@ case class Pos(row: Int, col: Int):
 
   def manhattanNorm: Int = row.abs + col.abs
   def manhattanDist(other: Pos): Int = (other - this).manhattanNorm
+  
+  def invertRow: Pos = Pos(-row, col)
+  def invertCol: Pos = Pos(row, -col)
 
 object Pos:
   val Origin = Pos(0, 0)

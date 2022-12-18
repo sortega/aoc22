@@ -56,11 +56,13 @@ object Matrix:
   def fromMap[A](map: Map[Pos, A], emptyValue: A): Matrix[A] = fromMap(map, _ => emptyValue)
 
   def fromMap[A](map: Map[Pos, A], emptyValue: Pos => A): Matrix[A] = (for {
+    minRow <- map.keys.map(_.row).minOption
+    minCol <- map.keys.map(_.col).minOption
     maxRow <- map.keys.map(_.row).maxOption
     maxCol <- map.keys.map(_.col).maxOption
   } yield Matrix(
-    Vector.tabulate(maxRow + 1, maxCol + 1) { (row, col) =>
-      val pos = Pos(row, col)
+    Vector.tabulate(maxRow + 1 - minRow, maxCol + 1 - minCol) { (row, col) =>
+      val pos = Pos(minRow + row, minCol + col)
       map.getOrElse(pos, emptyValue(pos))
     }
   )).getOrElse(empty)
