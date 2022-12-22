@@ -8,7 +8,8 @@ case class Pos(row: Int, col: Int):
   @targetName("minus")
   def -(other: Pos): Pos = Pos(row - other.row, col - other.col)
 
-  def map(f: Int => Int): Pos = Pos(f(row), f(col))
+  def map(f: Int => Int): Pos = transform(f, f)
+  def transform(rowF: Int => Int, colF: Int => Int): Pos = Pos(rowF(row), colF(col))
 
   def adjacent4: Set[Pos] = CardinalPoint.values.map(_.pos + this).toSet
 
