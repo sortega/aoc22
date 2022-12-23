@@ -12,6 +12,7 @@ case class Pos(row: Int, col: Int):
   def transform(rowF: Int => Int, colF: Int => Int): Pos = Pos(rowF(row), colF(col))
 
   def adjacent4: Set[Pos] = CardinalPoint.values.map(_.pos + this).toSet
+  def adjacent8: Set[Pos] = CompassDir.values.map(_.pos + this).toSet
 
   def isAdjacent8(other: Pos): Boolean =
     val diff = other - this

@@ -3,7 +3,7 @@ package aoc
 import aoc.Collections.mapForKeys
 import cats.implicits.*
 
-import scala.annotation.{tailrec, targetName}
+import scala.annotation.{ tailrec, targetName }
 
 object Day18:
   type Input = Droplet
@@ -38,11 +38,10 @@ object Day18:
   def tomography(droplet: Droplet): String =
     val box = boundingBox(droplet)
     Matrix
-      .fromMap(
-        droplet
-          .map(point => point.toPos - Pos(row = box.y * point.z, col = 0) -> '#')
-          .toMap,
-        '.',
+      .fromSet(
+        droplet.map(point => point.toPos - Pos(row = box.y * point.z, col = 0)),
+        filled = '#',
+        empty = '.',
       )
       .toString("")
 

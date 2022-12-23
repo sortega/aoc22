@@ -67,6 +67,17 @@ object Matrix:
     }
   )).getOrElse(empty)
 
+  def fromSet[A](
+      set: Set[Pos],
+      filled: A,
+      empty: A,
+    ): Matrix[A] = fromMap(set.map(_ -> filled).toMap, empty)
+
+  def fromString(string: String): Matrix[Char] = parse(string)(identity)
+
+  def parse[A](string: String)(f: Char => A): Matrix[A] =
+    Matrix(string.linesIterator.map(_.map(f).toVector).toVector)
+
   implicit val matrixApplicative: Apply[Matrix] = new Apply[Matrix]:
     override def map[A, B](fa: Matrix[A])(f: A => B): Matrix[B] = fa.map(f)
     override def ap[A, B](ff: Matrix[A => B])(fa: Matrix[A]): Matrix[B] =

@@ -126,7 +126,7 @@ object Day17:
     override def toString: String =
       val floor = Set.tabulate(CaveWidth)(col => Pos(0, col))
       s"Time=$time Height=$height Jest=$jestIndex Rock=$rocks\n" + Matrix
-        .fromMap(consolidated.union(floor).map(pos => pos.invertRow -> Rocky).toMap, Empty)
+        .fromSet(consolidated.union(floor).map(pos => pos.invertRow), filled = Rocky, empty = Empty)
         .toString("")
 
   enum Cell(char: Char):
@@ -173,7 +173,8 @@ object Day17:
     def toCycle: Option[Cycle] = seen.get(cave.topState).map(start => Cycle(seed, start, cave))
 
   object CycleDetectionState:
-    def from(seed: Cave): CycleDetectionState = CycleDetectionState(seed, cave = seed, seen = Map.empty)
+    def from(seed: Cave): CycleDetectionState =
+      CycleDetectionState(seed, cave = seed, seen = Map.empty)
 
   private def heightAfterIterations(input: Input, iterations: Long): Long =
     Cycle.detect(Cave(jestPattern = input)).heightAt(iterations)
