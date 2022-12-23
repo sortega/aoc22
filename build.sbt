@@ -45,7 +45,9 @@ lazy val commonSettings = {
 
 lazy val dependencies = Seq(
   libraryDependencies ++= Seq(
-    "org.tpolecat" % "atto-core_3" % "0.9.5",
+    "com.google.ortools" % "ortools-java" % "9.5.2237",
+    "org.scala-lang.modules" %% "scala-parallel-collections" % "1.0.4",
+    "org.tpolecat" %% "atto-core" % "0.9.5",
     "org.typelevel" %% "cats-core" % "2.9.0",
   ),
   libraryDependencies ++= Seq(
