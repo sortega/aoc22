@@ -17,3 +17,6 @@ enum CardinalPoint(val pos: Pos, val char: Char):
     case West => South
     case South => East
     case East => North
+
+object CardinalPoint:
+  def fromChar(char: Char): Option[CardinalPoint] = values.find(_.char == char)
