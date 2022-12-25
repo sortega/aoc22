@@ -245,7 +245,8 @@ object Day16:
         val sortedValves = eligibleValves.diff(opened).toList.sortBy(id => -valves(id).rate)
         score + remainingMinutes * rate + (for
           (valve, index) <- sortedValves.zipWithIndex
-          timeOpen = remainingMinutes - (dist(pos(0) -> valve) `min` dist(pos(1) -> valve)) - 1 - (index / 2)
+          minDist = dist(pos(0) -> valve) `min` dist(pos(1) -> valve)
+          timeOpen = remainingMinutes - minDist - 1 - (index / 2)
           if timeOpen > 0
         yield valves(valve).rate * timeOpen).sum
 

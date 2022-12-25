@@ -22,6 +22,7 @@ final class Day18Test extends UnitTest:
 
   val actualInput = Inputs(day = 18).parseLines(Point.parse).toSet
 
+  // Enable to compare a droplet with its filled version
   "Droplets" `should` "be compared layer by layer" ignore {
     tomography(actualInput) should ===(tomography(fill(actualInput)))
   }
