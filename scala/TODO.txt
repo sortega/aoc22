@@ -1,0 +1,6 @@
+- Use more scala 3 features in general
+- Day 16: Doing part 2 I broke part 1
+- Faster day 14
+- case s"$foo" parsers more often
+- Scala 3 alternative to String.split without nullitis?
+- Matrix.toString to default to no extra whitespace
