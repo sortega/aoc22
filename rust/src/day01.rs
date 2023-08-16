@@ -1,7 +1,7 @@
-use std::path::Path;
 use std::fs::File;
 use std::io;
 use std::io::BufRead;
+use std::path::Path;
 
 pub fn solve() {
     let path = Path::new("inputs/day01.txt");
