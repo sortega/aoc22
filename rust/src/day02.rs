@@ -136,26 +136,21 @@ mod tests {
         assert_eq!(Strategy::Paper.against(Strategy::Scissors), Outcome::Lose);
         assert_eq!(Strategy::Scissors.against(Strategy::Rock), Outcome::Lose);
         assert_eq!(Strategy::Scissors.against(Strategy::Paper), Outcome::Win);
-        assert_eq!(Strategy::Scissors.against(Strategy::Scissors), Outcome::Draw);
+        assert_eq!(
+            Strategy::Scissors.against(Strategy::Scissors),
+            Outcome::Draw
+        );
     }
 
     #[test]
     fn test_part1() {
-        let input = vec![
-            ('A', 'Y'),
-            ('B', 'X'),
-            ('C', 'Z')
-        ];
+        let input = vec![('A', 'Y'), ('B', 'X'), ('C', 'Z')];
         assert_eq!(part1(&input), 15);
     }
 
     #[test]
     fn test_part2() {
-        let input = vec![
-            ('A', 'Y'),
-            ('B', 'X'),
-            ('C', 'Z')
-        ];
+        let input = vec![('A', 'Y'), ('B', 'X'), ('C', 'Z')];
         assert_eq!(part2(&input), 12);
     }
 }
