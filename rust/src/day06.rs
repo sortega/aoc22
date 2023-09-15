@@ -1,5 +1,5 @@
-use std::collections::HashSet;
 use crate::common;
+use std::collections::HashSet;
 
 fn part1(input: &str) -> usize {
     find_marker(&input, 4)
@@ -21,7 +21,7 @@ fn find_marker(input: &str, len: usize) -> usize {
 }
 
 pub fn solve() {
-    let lines = common::slurp_input(6);
+    let lines = common::slurp_lines(6);
     let input = lines.first().unwrap();
     println!(
         "DAY 06\n======\npart 1: {}\npart 2: {}\n",

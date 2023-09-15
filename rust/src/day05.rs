@@ -90,7 +90,7 @@ fn part2(input: &Input) -> String {
 }
 
 pub fn solve() {
-    let lines = common::slurp_input(5);
+    let lines = common::slurp_lines(5);
     let input = parse_input(&lines);
     println!(
         "DAY 05\n======\npart 1: {}\npart 2: {}\n",

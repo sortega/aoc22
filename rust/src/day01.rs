@@ -1,4 +1,4 @@
-use crate::common::slurp_input;
+use crate::common::slurp_lines;
 
 struct Inventory {
     item_calories: Vec<i32>,
@@ -13,7 +13,7 @@ impl Inventory {
 type Input = Vec<Inventory>;
 
 pub fn solve() {
-    let maybe_calories: Vec<Option<i32>> = slurp_input(1)
+    let maybe_calories: Vec<Option<i32>> = slurp_lines(1)
         .iter()
         .map(|line| line.trim().parse().ok())
         .into_iter()
